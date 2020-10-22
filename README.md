@@ -29,6 +29,7 @@
 | status_id     | integer       | null: false                    |
 | burden_id     | integer       | null: false                    |
 | area_id       | integer       | null: false                    |
+| prefecture_id | integer       | null: false                    |
 | days_id       | integer       | null: false                    |
 | price         | integer       | null: false                    |
 
@@ -43,7 +44,7 @@
 | -------------- | ---------- | ------------------------------ |
 | order          | references | null: false, foreign_key: true |
 | yubin          | string     | null: false                    |
-| prefectures_id | integer    | null: false                    |
+| prefecture_id  | integer    | null: false                    |
 | municipality   | string     | null: false                    |
 | number         | string     | null: false                    |
 | building       | string     |                                |
@@ -51,7 +52,7 @@
 
 ### Association
 
-- belongs_to :order
+- has_one :order
 
 ## orderテーブル
 
