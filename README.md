@@ -11,19 +11,18 @@
 | name               | string    | null: false |
 | family_name_kana   | string    | null: false |
 | name_kana          | string    | null: false |
-| date               | integer   | null: false |
+| date               | date      | null: false |
 
 ### Association
 
-- has_many :items_users
-- has_many :order_users
+- has_many :items
+- has_many :order
 
 ## itemテーブル
 
 | Column        | Type          | Options                        |
 | ------------- | ------------- | ------------------------------ |
-| user_id       | references    | null: false foreign_key: true  |
-| image         | string        | null: false                    |
+| user          | references    | null: false foreign_key: true  |
 | product       | string        | null: false                    |
 | instructions  | text          | null: false                    |
 | category      | string        | null: false                    |
@@ -46,11 +45,9 @@
 | yubin        | integer    | null: false                    |
 | prefectures  | text       | null: false                    |
 | municipality | text       | null: false                    |
-| number       | integer    | null: false                    |
-| building     | text       | null: false                    |
-| tell         | integer    | null: false                    |
-| days         | integer    | null: false                    |
-| price        | integer    | null: false                    |
+| number       | string     | null: false                    |
+| building     | string     | null: null                     |
+| tell         | string     | null: false                    |
 
 ### Association
 
@@ -60,8 +57,8 @@
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| user_id      | references | null: false                    |
-| item_id      | references | null: false                    |
+| user         | references | null: false, foreign_key: true |
+| item         | references | null: false, foreign_key: true |
 
 ### Association
 
