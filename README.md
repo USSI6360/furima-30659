@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :order
+- has_many :orders
 
 ## itemテーブル
 
@@ -25,29 +25,29 @@
 | user          | references    | null: false foreign_key: true  |
 | product       | string        | null: false                    |
 | instructions  | text          | null: false                    |
-| category      | string        | null: false                    |
-| status        | string        | null: false                    |
-| burden        | text          | null: false                    |
-| area          | text          | null: false                    |
-| days          | integer       | null: false                    |
+| category_id   | integer       | null: false                    |
+| status_id     | integer       | null: false                    |
+| burden_id     | integer       | null: false                    |
+| area_id       | integer       | null: false                    |
+| days_id       | integer       | null: false                    |
 | price         | integer       | null: false                    |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :order
+- has_one_to :order
 
 ## address テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| user_id      | references | null: false, foreign_key: true |
-| yubin        | integer    | null: false                    |
-| prefectures  | text       | null: false                    |
-| municipality | text       | null: false                    |
-| number       | string     | null: false                    |
-| building     | string     | null: null                     |
-| tell         | string     | null: false                    |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| order          | references | null: false, foreign_key: true |
+| yubin          | string     | null: false                    |
+| prefectures_id | integer    | null: false                    |
+| municipality   | string     | null: false                    |
+| number         | string     | null: false                    |
+| building       | string     |                                |
+| tell           | string     | null: false                    |
 
 ### Association
 
