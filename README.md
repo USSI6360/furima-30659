@@ -2,23 +2,20 @@
 
 ## users テーブル
 
-| Column     | Type      | Options     |
-| ---------- | ----------| ----------- |
-| nickname   | string    | null: false |
-| email      | string    | null: false |
-| password   | string    | null: false |
-| nyouji     | string    | null: false |
-| name       | string    | null: false |
-| nyouji_kana| string    | null: false |
-| name_kana  | string    | null: false |
-| year       | integer   | null: false |
-| month      | integer   | null: false |
-| day        | integer   | null: false |
+| Column             | Type      | Options     |
+| ------------------ | ----------| ----------- |
+| nickname           | string    | null: false |
+| email              | string    | null: false |
+| encrypted_password | string    | null: false |
+| family_name        | string    | null: false |
+| name               | string    | null: false |
+| family_name_kana   | string    | null: false |
+| name_kana          | string    | null: false |
+| date               | integer   | null: false |
 
 ### Association
 
 - has_many :items_users
-- has_one :address
 - has_many :order_users
 
 ## itemテーブル
@@ -40,7 +37,6 @@
 
 - belongs_to :user
 - belongs_to :order
-- has_one :item
 
 ## address テーブル
 
@@ -58,20 +54,17 @@
 
 ### Association
 
-- has_one :item
-- has_one :user
-- has_one :order
+- belongs_to :order
 
 ## orderテーブル
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| user_id      | references | null: false, foreign_key: true |
-| item_id      | references | null: false, foreign_key: true |
-| time         | time       | null: false                    |
+| user_id      | references | null: false                    |
+| item_id      | references | null: false                    |
 
 ### Association
 
-- has_one :item
+- belongs_to :item
 - has_one :address
 - belongs_to :user
