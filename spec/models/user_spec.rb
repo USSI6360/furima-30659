@@ -39,6 +39,9 @@ describe User do
         expect(anoter_user.errors.full_messages).to include("Email has already been taken")
       end
       it "emailに＠が抜けては登録できない" do
+        @user.postal_code = '@'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Postal code is invalid. Include (@)")
       end
       it "passwordが空では登録できない" do
         @user.password = ""
@@ -54,6 +57,46 @@ describe User do
         @user password_confirmation = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
+      it 'family_nameが空だと保存できないこと' do
+        @user.family_name = nil
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family_name can't be blank")
+      end
+      it 'family_nameが全角でないと保存できないこと' do
+        @user.family_name_reading = "アベ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family_name reading is invalid. Input full-width katakana characters.")
+      end
+      it 'nameが空だと保存できないこと' do
+        @user.name = nil
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Name can't be blank")
+      end
+      it 'family_name_kanaが空だと保存できないこと' do
+        @user.family_name_kana = nil
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family_name_kana can't be blank")
+      end
+      it 'family_name_kanaが全角でないと保存できないこと' do
+        @user.family_name_kana_reading = "アベ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family_name_kana reading is invalid. Input full-width katakana characters.")
+      end
+      it 'name_kanaが空だと保存できないこと' do
+        @user.name_kana = nil
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Name_kana can't be blank")
+      end
+      it 'name_kanaが全角でないと保存できないこと' do
+        @user.name_kana_reading = "アベ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Name_kana reading is invalid. Input full-width katakana characters.")
+      end
+      it 'birth_dateが空だと保存できないこと' do
+        @user.birth_date = nil
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Birth_date can't be blank")
       end
     end
 end
