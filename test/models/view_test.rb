@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FurimaControllerTest < ActionDispatch::IntegrationTest
+class ViewTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
