@@ -43,4 +43,8 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def image_params
+    params.require(:image).permit(:content, :image).merge(user_id: current_user.id)
+  end
+
 end
