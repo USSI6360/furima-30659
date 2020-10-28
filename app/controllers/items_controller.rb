@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit]
+  before_action :authenticate_user!, only: [:new]
+  # newにログアウト状態で入ろうとするとログイン画面へ
 
   def index
     # @item = Item.all
@@ -37,7 +39,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def set_tweet
+  def set_item
     @item = Item.find(params[:id])
   end
 
