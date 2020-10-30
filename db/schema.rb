@@ -34,36 +34,36 @@ ActiveRecord::Schema.define(version: 2020_10_28_081609) do
   end
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "order_id"
-    t.string "yubin"
-    t.integer "prefecture_id"
-    t.string "municipality"
-    t.string "number"
-    t.string "building"
-    t.string "tell"
+    t.bigint "order_id", null: false
+    t.string "yubin", null: false
+    t.integer "prefecture_id", null: false
+    t.string "municipality", null: false
+    t.string "number", null: false
+    t.string "building", null: false
+    t.string "tell", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_addresses_on_order_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "product_name"
-    t.text "instructions"
-    t.integer "category_id"
-    t.integer "status_id"
-    t.integer "burden_id"
-    t.integer "prefecture_id"
-    t.integer "days_id"
-    t.integer "price"
+    t.bigint "user_id", null: false
+    t.string "product_name", null: false
+    t.text "instructions", null: false
+    t.integer "category_id", null: false
+    t.integer "status_id", null: false
+    t.integer "burden_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "days_id", null: false
+    t.integer "price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "item_id"
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_orders_on_item_id"
