@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   # newにログアウト状態で入ろうとするとログイン画面へ
 
   def index
-    @item = Item.all
+    @items = Item.all
   end
 
   def edit
@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:product_name, :instructions, :category_id, :status_id, :burden_id, :prefecture_id, :days_id, :price).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :product_name, :instructions, :category_id, :status_id, :burden_id, :prefecture_id, :days_id, :price).merge(user_id: current_user.id)
   end
   
   def move_to_index

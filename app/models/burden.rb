@@ -1,5 +1,4 @@
 class Burden < ActiveHash::Base
-  # belongs_to_active_hash :item
   self.data = [
     { id: 0, name: '--' },
     { id: 1, name: '着払い（購入者負担）' },

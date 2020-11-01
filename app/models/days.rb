@@ -1,5 +1,4 @@
 class Days < ActiveHash::Base
-  # belongs_to_active_hash :item
   self.data = [
     {id: 0, name: '----------'},
     {id: 1, name: '1~2日で発送'}, 
