@@ -1,7 +1,5 @@
 window.addEventListener('load', () => {
 
-  //   nil == location.pathname
-  // if (nil == /items/new){
 
   const priceInput = document.getElementById("item-price")
   priceInput.addEventListener("input", () => {
@@ -10,7 +8,6 @@ window.addEventListener('load', () => {
   addTaxDom.innerHTML = Math.floor(inputValue/10)
   const addLaxDom = document.getElementById("profit")
   addLaxDom.innerHTML = Math.floor(inputValue-inputValue/10)
-  console.log(inputValue);
 })
 });
 

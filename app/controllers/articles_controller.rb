@@ -1,4 +1,3 @@
-class ArticlesController < ApplicationController
   def new
     @burden = Burden.order("created_at DESC")
     @category = Category.order("created_at DESC")
