@@ -1,24 +1,33 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit]
+  before_action :authenticate_user!, only: [:new]
+  # newにログアウト状態で入ろうとするとログイン画面へ
 
   def index
-    # @item = Item.all
+    @items = Item.all
   end
 
   def edit
   end
 
   def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def new
+    @item = Item.new
   end
 
   def show
   end
 
   def update
-    if current_user.update(user_params)
+    if update(item_params)
       redirect_to root_path
     else
       render :edit
@@ -27,8 +36,8 @@ class ItemsController < ApplicationController
 
   private
 
-  def user_params
-    params.require(:user).permit(:name, :email)
+  def item_params
+    params.require(:item).permit(:image, :product_name, :instructions, :category_id, :status_id, :burden_id, :prefecture_id, :days_id, :price).merge(user_id: current_user.id)
   end
   
   def move_to_index
@@ -37,7 +46,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def set_tweet
+  def set_item
     @item = Item.find(params[:id])
   end
 
