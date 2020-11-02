@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.new
   end
 
   def update
