@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   # newにログアウト状態で入ろうとするとログイン画面へ
 
   def index
-    # @items = Item.all
+    @items = Item.all
   end
 
   def edit
