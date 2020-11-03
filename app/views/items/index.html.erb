@@ -128,11 +128,8 @@
 
       <% @items.each do |item|%>
       <li class='list'>
-<<<<<<< HEAD
         <%= link_to item_path(item.id),method: :get do %>
-=======
         <%= link_to item_path do %>
->>>>>>> 7d44ad84d87318e1006f432fe2067a9ac7320aff
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
 
