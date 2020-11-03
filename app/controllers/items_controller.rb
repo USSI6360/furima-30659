@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit]
+  before_action :set_item, only: [:edit,:show]
   before_action :authenticate_user!, only: [:new]
   # newにログアウト状態で入ろうとするとログイン画面へ
 
@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.new
+    @item = Item.find(params[:id])
   end
 
   def update
