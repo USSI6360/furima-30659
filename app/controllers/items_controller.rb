@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit,:show]
-  before_action :authenticate_user!, only: [:new]
+  before_action :set_item, only: [:edit,:update,:show,:destroy]
+  before_action :authenticate_user!, only: [:edit,:new]
   # newにログアウト状態で入ろうとするとログイン画面へ
 
   def index
@@ -24,16 +24,20 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def update
-    if update(item_params)
+    if @item.update(item_params)
       redirect_to root_path
     else
       render :edit
     end
   end
+
+  def destroy
+    @item.destroy(item_params)
+  end
+
 
   private
 
