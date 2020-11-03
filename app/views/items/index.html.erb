@@ -126,10 +126,13 @@
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
 
-      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <% @items.each do |item|%>
       <li class='list'>
+<<<<<<< HEAD
         <%= link_to item_path(item.id),method: :get do %>
+=======
+        <%= link_to item_path do %>
+>>>>>>> 7d44ad84d87318e1006f432fe2067a9ac7320aff
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
 
@@ -155,9 +158,7 @@
         <% end %>
       </li>
      <% end %>
-      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
 
-      <%# 商品がない場合のダミー %>
       <% if @items == nil %>
         <li class='list'>
           <%= link_to '#' do %>
