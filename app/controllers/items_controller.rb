@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit,:update,:show]
+  before_action :set_item, only: [:edit,:update,:show,:destroy]
   before_action :authenticate_user!, only: [:new]
   # newにログアウト状態で入ろうとするとログイン画面へ
 
@@ -27,13 +27,13 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item.update(item_params)
-    if update(item_params)
+    if @item.update(item_params)
       redirect_to root_path
     else
       render :edit
     end
   end
+
 
   private
 
