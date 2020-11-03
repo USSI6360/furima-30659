@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit,:update,:show,:destroy]
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:edit,:new]
   # newにログアウト状態で入ろうとするとログイン画面へ
 
   def index
