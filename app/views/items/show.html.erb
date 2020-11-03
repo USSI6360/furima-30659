@@ -9,7 +9,7 @@
     <div class='item-img-content'>
       <%= image_tag @item.image, class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
-      <%# <% if @items(item.id) == nil %> 
+      <%# <% if @items(item.id) == nil  %>
       <div class='sold-out'>
         <span>Sold Out!!</span>
       </div>
@@ -35,11 +35,8 @@
     <%end%>
     <%end%>
 
-
-    <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
-
     <div class="item-explain-box">
-      <span><%= "商品説明" %></span>
+      <span><td class="detail-value"><%= @item.instructions %></td></span>
     </div>
     <table class="detail-table">
       <tbody>
@@ -104,7 +101,7 @@
       後ろの商品 ＞
     </a>
   </div>
-  <a href="#" class='another-item'><%= "商品のカテゴリー名" %>をもっと見る</a>
+  <a href="#" class='another-item'><td class="detail-value"><%= @item.category.name %>をもっと見る</a>
 </div>
 
 <%= render "shared/footer" %>
