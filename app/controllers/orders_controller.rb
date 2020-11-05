@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
   def create
     @item = Item.find(params[:item_id])
     @buy=Buy.new (address_params)
-    binding.pry
+    
     if @buy.valid?
       @buy.save
       redirect_to root_path
