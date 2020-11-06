@@ -1,9 +1,8 @@
 class Buy 
   include ActiveModel::Model
-  # attr_accessor :order_id,:yubin,:prefecture_id,:municipality,:number,:building,:tell,:user_id,:item_id,:token
   attr_accessor :yubin,:prefecture_id,:municipality,:number,:building,:tell,:user_id,:item_id,:token
   
-  # validates :token,presence: true
+  validates :token,presence: true
   validates :yubin, format: { with: /\A\d{3}[-]\d{4}\z/}
   validates :prefecture_id, numericality: { other_than: 0 }
   validates :municipality,format: { with: /\A[ぁ-んァ-ン一-龥]/ }
