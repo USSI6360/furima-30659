@@ -1,14 +1,17 @@
 class Buy 
   include ActiveModel::Model
-  attr_accessor :order_id,:yubin,:prefecture_id,:municipality,:number,:building,:tell,:user_id,:item_id
+  # attr_accessor :order_id,:yubin,:prefecture_id,:municipality,:number,:building,:tell,:user_id,:item_id,:token
+  attr_accessor :yubin,:prefecture_id,:municipality,:number,:building,:tell,:user_id,:item_id,:token
   
+  # validates :token,presence: true
   validates :yubin, format: { with: /\A\d{3}[-]\d{4}\z/}
   validates :prefecture_id, numericality: { other_than: 0 }
   validates :municipality,format: { with: /\A[ぁ-んァ-ン一-龥]/ }
-  validates :number,format: { with: /\A\d{11}\z/}
+  validates :number,presence: true
   validates :tell, format: { with: /\A\d{11}\z/}
+
   def save
-    order=Order.create(user_id: user_id, item_id: item_id)
+    order = Order.create(user_id: user_id, item_id: item_id)
     Address.create(yubin: yubin, prefecture_id: prefecture_id, municipality: municipality, number: number,building: building,tell: tell,order_id: order.id)
    
   end
