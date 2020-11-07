@@ -8,7 +8,6 @@ class OrdersController < ApplicationController
     if @item.user_id == current_user.id || @item.order != nil
       redirect_to root_path
     end
-    @order = Order.new
     @buy = Buy.new
   end
 
