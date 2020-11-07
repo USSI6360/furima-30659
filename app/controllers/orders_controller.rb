@@ -1,14 +1,18 @@
 class OrdersController < ApplicationController
+  before_action :set_item, only: [:index,:create]
+  before_action :authenticate_user!
 
   def index
-    @order=Address.ids
-    @item = Item.find(params[:item_id])
+    # 出品者はURLを直接入力して購入ページに遷移しようとすると、トップページに遷移する
+    # 購入済み商品の購入ページへ遷移しようとすると、トップページに遷移する
+    if @item.user_id == current_user.id || @item.order != nil
+      redirect_to root_path
+    end
     @order = Order.new
     @buy = Buy.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @buy = Buy.new(address_params)
     if @buy.valid?
       pay_item
@@ -25,6 +29,9 @@ class OrdersController < ApplicationController
     params.require(:buy).permit(:order_id, :yubin, :prefecture_id, :municipality, :number, :building, :tell).merge(item_id: params[:item_id],user_id: current_user.id,token: params[:token])
   end
 
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
@@ -34,4 +41,5 @@ class OrdersController < ApplicationController
       currency: 'jpy' 
     )
   end
+
 end
