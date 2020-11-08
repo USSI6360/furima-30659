@@ -52,7 +52,7 @@ RSpec.describe Buy, type: :model do
         expect(@buy.errors.full_messages).to include("Tell is invalid")
       end
       it "tellが数字のみでないと登録できない" do
-        @buy.tell = "1"
+        @buy.tell = "1-1"
         @buy.valid?
         expect(@buy.errors.full_messages).to include("Tell is invalid")
       end

@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
-
   end
 
   def edit
@@ -25,7 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    
   end
 
   def update
