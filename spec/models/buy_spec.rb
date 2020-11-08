@@ -16,7 +16,7 @@ RSpec.describe Buy, type: :model do
       expect(@buy.errors.full_messages).to include("Yubin is invalid")
     end
     it "yubinに-が抜けては登録できない" do
-      @buy.yubin = '-'
+      @buy.yubin = '1234567'
       @buy.valid?
       expect(@buy.errors.full_messages).to include("Yubin is invalid")
     end
@@ -51,7 +51,13 @@ RSpec.describe Buy, type: :model do
         @buy.valid?
         expect(@buy.errors.full_messages).to include("Tell is invalid")
       end
-      it "tokenが空では登録できないこと" do
+      it "tellが数字のみでないと登録できない" do
+        @buy.tell = "1"
+        @buy.valid?
+        expect(@buy.errors.full_messages).to include("Tell is invalid")
+      end
+
+       it"tokenが空では登録できないこと" do
         @buy.token = nil
         @buy.valid?
         expect(@buy.errors.full_messages).to include("Token can't be blank")
