@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_10_28_081609) do
   end
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "order_id", null: false
+    t.bigint "order_id"
     t.string "yubin", null: false
     t.integer "prefecture_id", null: false
     t.string "municipality", null: false
@@ -89,4 +89,5 @@ ActiveRecord::Schema.define(version: 2020_10_28_081609) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "addresses", "orders"
 end
