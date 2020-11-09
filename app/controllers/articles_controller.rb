@@ -5,4 +5,3 @@
     @prefecture = Prefecture.order("created_at DESC")
     @status = Status.order("created_at DESC")
   end
-end
